@@ -43,9 +43,22 @@ public class GetRequest03 {
                 body("depositpaid",Matchers.equalTo(true)).
                 body("bookingdates.checkin",Matchers.equalTo("2017-11-11")).
                 body("bookingdates.checkout",Matchers.equalTo("2020-04-20"));
+
+        response.
+                then().
+                assertThat().
+                statusCode(200).
+                contentType("application/json").
+                body("firstname",Matchers.equalTo("Susan"),
+                        "lastname",Matchers.equalTo("Ericsson"),
+                        "totalprice",Matchers.equalTo(468),
+                        "depositpaid",Matchers.equalTo(true),
+                        "bookingdates.checkin",Matchers.equalTo("2020-04-17"),
+                        "bookingdates.checkout",Matchers.equalTo("2020-05-01") );
+
         // body("additionalneeds",Matchers.equalTo("Breakfast"));
         // Status code 2. yol
-        //   assertEquals(200,response.getStatusCode());
+        //  assertEquals(200,response.getStatusCode());
 
     }
 }

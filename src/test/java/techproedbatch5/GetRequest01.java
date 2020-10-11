@@ -5,6 +5,7 @@ import org.junit.Test;
 import static io.restassured.RestAssured.*;
 
 public class GetRequest01 {
+    Response response=given().when().get("https://restful-booker.herokuapp.com/booking");
     //Rest-Assured kulanarak API testing yapacagiz
     @Test
     public void getMethod01(){
@@ -23,7 +24,7 @@ public class GetRequest01 {
 // postman deki ciktinin aynisini elde edecegiz. Response body kismina yazilir
     @Test
     public  void getMethod02(){
-        Response response=given().when().get("https://restful-booker.herokuapp.com/booking");
+
         //responde body console yazdirmk icin
         //response.prettyPrint();
         //
