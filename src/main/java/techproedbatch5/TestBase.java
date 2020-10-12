@@ -21,7 +21,4 @@ public class TestBase {
                 setBaseUri("http://dummy.restapiexample.com/api/v1/employees").
                 build();
     }
-
-
-
 }
