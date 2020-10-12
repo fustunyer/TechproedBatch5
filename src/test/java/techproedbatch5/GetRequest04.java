@@ -22,9 +22,10 @@ public class GetRequest04 {
     */
     @Test
     public void get01(){
-        Response response=given().accept(ContentType.JSON).
-                            when().
-                            get("  http://dummy.restapiexample.com/api/v1/employees");
+        Response response=given().
+                accept(ContentType.JSON).
+                when().
+                get("  http://dummy.restapiexample.com/api/v1/employees");
         response.prettyPrint();
         response.then().
                 assertThat().

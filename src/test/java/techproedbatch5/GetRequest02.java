@@ -2,9 +2,7 @@ package techproedbatch5;
 import static org.junit.Assert.*;
 import io.restassured.response.Response;
 import org.junit.Test;
-
 import static io.restassured.RestAssured.given;
-
 public class GetRequest02 {
     /*
      Positive Scenario:
@@ -14,9 +12,7 @@ public class GetRequest02 {
     then() status code 200 dur.
     and() content type "application/json" dir.
      */
-
-
-    @Test
+  @Test
     public void get01(){
         given().
                 accept("application/json").
@@ -25,9 +21,7 @@ public class GetRequest02 {
                 then().
                 assertThat().statusCode(200).
                 contentType("application/json");
-
-
-    }
+}
     /*
     //Negative Scenatio:
     //when() Bir Get Request aşagida verilen Endpoint e yollanir.
@@ -47,8 +41,7 @@ public class GetRequest02 {
                 then().
                 assertThat().statusCode(404);//negatif senaryolarda content type olmaz
                 //contentType("application/json");
-
-    }
+   }
     /*
     //Negative Scenatio:
     //when() Bir Get Request aşagida verilen Endpoint e yollanir.
@@ -63,13 +56,8 @@ public class GetRequest02 {
                         when().
                         get("https://restful-booker.herokuapp.com/booking/1001");
         response.prettyPrint();
-
         assertEquals(404,response.getStatusCode());
         assertTrue(response.asString().contains("Not Found"));
         assertFalse(response.asString().contains("Techproed"));
-
     }
-
-
-
 }
