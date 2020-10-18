@@ -27,7 +27,7 @@ public class GetRequest01 {
 
         //responde body console yazdirmk icin
         //response.prettyPrint();
-        //
+        
         System.out.println("status code: "+response.getStatusCode());
         System.out.println("Status Line: "+response.getStatusLine());
         //Headers kisminda content type yazdirilir. 1. yol

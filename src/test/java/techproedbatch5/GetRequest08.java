@@ -45,7 +45,7 @@ public class GetRequest08 extends TestBase{
         System.out.println(jsonPath.getString("bookingdates.checkin"));
         System.out.println(jsonPath.getString("bookingdates.checkout"));
 
-        assertEquals("fistname istenilen gibi degil","Eric",jsonPath.getString("firstname"));
+        assertEquals("fistname istenilen gibi degil","Mark",jsonPath.getString("firstname"));
         assertEquals("totalprice istenilen gibi degil","744",jsonPath.getString("totalprice"));
         assertEquals("depositpaid istenilen gibi degil","false",jsonPath.getString("depositpaid"));
         assertEquals("bookingdates.checkin istenilen gibi degil","2018-03-15",jsonPath.getString("bookindates.checkin"));
