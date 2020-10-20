@@ -1,4 +1,102 @@
 package techproedbatch5;
+import static io.restassured.RestAssured.*;
 
-public class PostRequest01 {
+import io.restassured.http.ContentType;
+import io.restassured.path.json.JsonPath;
+import org.testng.annotations.Test;
+
+import io.restassured.response.Response;
+import org.testng.asserts.SoftAssert;
+
+
+public class PostRequest01 extends TestBase {
+    /*
+    Get Request olusturmak icin sadece endpoint gerekiyordu.
+
+    Post Request olusturmak icin gerekenler;
+        *1) EndPoint sart
+        *2) Request Body yani kaydedilecek olan data
+        3) Autorization sart (eger verilmemisse)
+        4) Accept type istege bagli
+        5) Content Type (icerik tipi)
+
+         İnterview Sorusu: *get ile post request arasindaki farklar nedir?
+                           get endpoint gereklidir. autorization her test icin zorunlu olmayabilir.
+                           *post request icin endpoint ve body (data) gereklidir.
+                           Get var olan data lari gormek icin kullanilir.
+                           Post ise olmayan data yi olusturmak icin kullanilir. (yeni data olusturulur.)
+          NOTE: SQL de doldurulmasi zorunlu alanlar vardir. not null,primary key, foreign key vb. constrains denir
+                API developer  olusturlacak data nin hangi bolumlerini zorunlu kildi ise o kisimlar bos gecilemez.
+                Post request olustururken bu kisimlar kesinlik doldurulmali.
+                Sweger dokumantasyonunda bu kisimlar acikca yazar.
+                Eger bos gecilirse '400 Bad Request' hatasi aliriz.
+
+                  *  POST Scenario:
+            Content type Json olsun  (Content Type demektir.)
+             When
+             POST request yolladigimda
+             1) https://restful-booker.herokuapp.com/booking
+             2) Request Body
+             {
+             "firstname": "Hasan",
+             "lastname": "Kara",
+             "totalprice": 123,
+             "depositpaid": true,
+             "bookingdates": {
+             "checkin": "2020-05-02",
+             "checkout": "2020-05-05"
+             },
+             "additionalneeds": "Wifi"
+             }
+             Then
+             Status Code 200 olmali
+             Response Body, Request Body ile ayni olduğunu verfy ediniz
+         */
+        @Test
+    public void post01(){
+            //1. yol iyi ama tavsiye edilmez.
+String jsonReqBody="{\n" +
+        "             \"firstname\": \"Hasan\",\n" +
+        "             \"lastname\": \"Kara\",\n" +
+        "             \"totalprice\": 123,\n" +
+        "             \"depositpaid\": true,\n" +
+        "             \"bookingdates\": {\n" +
+        "             \"checkin\": \"2020-05-02\",\n" +
+        "             \"checkout\": \"2020-05-05\"\n" +
+        "             },\n" +
+        "             \"additionalneeds\": \"Wifi\"\n" +
+        "             }";
+            Response response= given().
+                    contentType(ContentType.JSON).
+                    spec(spec01).
+                    auth().
+                    basic("admin","password123").
+                    body(jsonReqBody).
+                    when().
+                    post("/booking");
+            response.prettyPrint();
+
+            //status code 200 olmali
+            response.
+                    then().
+                    assertThat().
+                    statusCode(200); //hard assrtion
+
+            //JsonPath kullanarak assertion
+            JsonPath jsonPath =response.jsonPath();
+
+            SoftAssert softAssert=new SoftAssert();
+
+            softAssert.assertEquals(jsonPath.getString("booking.firstname"),"Hasan");
+            softAssert.assertEquals(jsonPath.getString("booking.lastname"),"Kara");
+            softAssert.assertEquals(jsonPath.getInt("booking.totalprice"),123);
+            softAssert.assertEquals(jsonPath.getBoolean("booking.depositpaid"),true);
+            softAssert.assertEquals(jsonPath.getString("booking.bookingdates.checkin"),"2020-05-02");
+            softAssert.assertEquals(jsonPath.getString("booking.bookingdates.checkout"),"2020-05-05");
+            softAssert.assertEquals(jsonPath.getString("booking.additionalneeds"),"Wifi");
+
+          softAssert.assertAll();
+
+        }
+
 }

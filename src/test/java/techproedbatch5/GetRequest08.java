@@ -22,6 +22,10 @@ public class GetRequest08 extends TestBase{
 	                   "checkout":"2019-07-02" }
 	 }
 	*/
+    public void get(String str){
+        System.out.println(str);
+
+    }
 
     @Test
     public void get01(){
