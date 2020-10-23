@@ -66,6 +66,7 @@ String jsonReqBody="{\n" +
         "             },\n" +
         "             \"additionalneeds\": \"Wifi\"\n" +
         "             }";
+
             Response response= given().
                     contentType(ContentType.JSON).
                     spec(spec01).

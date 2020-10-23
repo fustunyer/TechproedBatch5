@@ -1,11 +1,5 @@
 package techproedbatch5;
-import org.codehaus.jackson.annotate.JsonAnyGetter;
-import org.codehaus.jackson.annotate.JsonAnySetter;
-import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonProperty;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class Booking {
     /*Pojoda olmasi gereken ler
@@ -20,11 +14,11 @@ public class Booking {
     @JsonProperty("lastname")
     private String lastname;
     @JsonProperty("totalprice")
-    private Integer totalprice;
+    private int totalprice;
     @JsonProperty("depositpaid")
-    private Boolean depositpaid;
+    private boolean depositpaid;
     @JsonProperty("bookingdates")
-    private Bookingdates bookingdates;
+    private BookingDates bookingdates;
     @JsonProperty("additionalneeds")
     private String additionalneeds;
 
@@ -49,32 +43,32 @@ public class Booking {
     }
 
     @JsonProperty("totalprice")
-    public Integer getTotalprice() {
+    public int getTotalprice() {
         return totalprice;
     }
 
     @JsonProperty("totalprice")
-    public void setTotalprice(Integer totalprice) {
+    public void setTotalprice(int totalprice) {
         this.totalprice = totalprice;
     }
 
     @JsonProperty("depositpaid")
-    public Boolean getDepositpaid() {
+    public boolean getDepositpaid() {
         return depositpaid;
     }
 
     @JsonProperty("depositpaid")
-    public void setDepositpaid(Boolean depositpaid) {
+    public void setDepositpaid(boolean depositpaid) {
         this.depositpaid = depositpaid;
     }
 
     @JsonProperty("bookingdates")
-    public Bookingdates getBookingdates() {
+    public BookingDates getBookingdates() {
         return bookingdates;
     }
 
     @JsonProperty("bookingdates")
-    public void setBookingdates(Bookingdates bookingdates) {
+    public void setBookingdates(BookingDates bookingdates) {
         this.bookingdates = bookingdates;
     }
 
@@ -91,7 +85,7 @@ public class Booking {
     public Booking() {
     }
 
-    public Booking(String firstname, String lastname, Integer totalprice, Boolean depositpaid, Bookingdates bookingdates, String additionalneeds) {
+    public Booking(String firstname, String lastname, Integer totalprice, Boolean depositpaid, BookingDates bookingdates, String additionalneeds) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.totalprice = totalprice;

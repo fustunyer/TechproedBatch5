@@ -14,7 +14,7 @@ import java.util.Map;
 4) olusturdugumuz variable icin parametreli constructor lari olusturalim.
 5)toString Methodu olusturacagiz
 */
-public class Bookingdates {
+public class BookingDates {
     @JsonProperty("checkin")
     private String checkin;
     @JsonProperty("checkout")
@@ -41,10 +41,10 @@ public class Bookingdates {
         this.checkout = checkout;
     }
 
-    public Bookingdates() {
+    public BookingDates() {
     }
 
-    public Bookingdates(String checkin, String checkout) {
+    public BookingDates(String checkin, String checkout) {
         this.checkin = checkin;
         this.checkout = checkout;
     }
