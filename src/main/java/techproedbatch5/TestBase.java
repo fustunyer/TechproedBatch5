@@ -18,7 +18,7 @@ public class TestBase {
     protected  Map <String, Object> requestBodyMap;
     @Before
     public void setUp01(){
-        spec01=  new  RequestSpecBuilder().
+        spec01=  new RequestSpecBuilder().
                 setBaseUri("https://restful-booker.herokuapp.com").
                 build();
         //Uri olusturduk ve spec01 icerisine depoladik.
@@ -26,13 +26,13 @@ public class TestBase {
     }
     @Before
     public void setUp02(){
-        spec02 = new  RequestSpecBuilder().
+        spec02 = new RequestSpecBuilder().
                 setBaseUri("http://dummy.restapiexample.com/api/v1/employees").
                 build();
     }
     @Before
     public void setUp03(){
-        spec03 = new  RequestSpecBuilder().
+        spec03 = new RequestSpecBuilder().
                 setBaseUri("https://jsonplaceholder.typicode.com/todos").
                 build();
     }
